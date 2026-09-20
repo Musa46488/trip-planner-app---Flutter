@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:venture_scape/storage_service.dart';
+import 'package:venture_scape/services/storage_service.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PlacePanoView extends StatefulWidget {

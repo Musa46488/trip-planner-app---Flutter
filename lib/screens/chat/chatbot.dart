@@ -8,7 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'new_places.dart';
+import 'package:venture_scape/screens/places/new_places.dart';
 
 
 class MyChatbot extends StatelessWidget {

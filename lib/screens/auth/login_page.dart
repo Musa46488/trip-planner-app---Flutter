@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dashboard.dart';
-import 'signup_page.dart';
-import 'auth_service.dart';
+import 'package:venture_scape/screens/dashboard.dart';
+import 'package:venture_scape/screens/auth/signup_page.dart';
+import 'package:venture_scape/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
