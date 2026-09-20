@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "333607680679",
+    "project_id": "booking-app-f38d1",
+    "storage_bucket": "booking-app-f38d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333607680679:android:f62cde405b5f4c42bb7982",
+        "android_client_info": {
+          "package_name": "com.example.bookingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlsiR-uf31vhMVQZg78ON6aXi_T2Q0VdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333607680679:android:d7e3b9eeb0e92374bb7982",
+        "android_client_info": {
+          "package_name": "com.example.venture_scape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlsiR-uf31vhMVQZg78ON6aXi_T2Q0VdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
