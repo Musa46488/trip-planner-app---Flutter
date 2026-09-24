@@ -1,6 +1,6 @@
 # Adventure Scape (venture_scape)
 
-Flutter frontend for an AI-powered travel planning app focused on Pakistan. It is the mobile client for the [AdventureScape backend](https://github.com/Musa46488/Trip-Planner-App---Flutter) — users browse places and hotels, explore them in Google Street View, save favorites, and chat with an AI assistant that plans trips and estimates fuel costs.
+Flutter frontend for an AI-powered travel planning app focused on Pakistan. It is the mobile client for the [AdventureScape backend](https://github.com/Musa46488/Trip-Planner-App---FastAPI) — users browse places and hotels, explore them in Google Street View, save favorites, and chat with an AI assistant that plans trips and estimates fuel costs.
 
 ## Features
 
