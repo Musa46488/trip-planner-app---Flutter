@@ -1,73 +1,32 @@
-import 'package:venture_scape/pano_view.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:venture_scape/storage_service.dart';
-import 'dashboard.dart';
-import 'favourite.dart';
-import 'profile_page.dart';
+import 'package:venture_scape/services/storage_service.dart';
+import 'package:flutter/material.dart';
+import 'package:venture_scape/screens/dashboard.dart';
+import 'package:venture_scape/screens/favorites/favourite.dart';
+import 'package:venture_scape/screens/profile/profile_page.dart';
 
-class PlaceInfoScreen extends StatefulWidget {
-  final Map<String, String> place;
+class HotelInfoScreen extends StatefulWidget {
+  final Map<String, String> hotel;
   final VoidCallback onToggleFavorite;
   final bool isFavorite;
 
-  const PlaceInfoScreen({
+  const HotelInfoScreen({
     super.key,
-    required this.place,
+    required this.hotel,
     required this.onToggleFavorite,
     required this.isFavorite,
   });
 
   @override
-  _PlaceInfoScreenState createState() => _PlaceInfoScreenState();
+  _HotelInfoScreenState createState() => _HotelInfoScreenState();
 }
 
-class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
+class _HotelInfoScreenState extends State<HotelInfoScreen> {
   bool showOverview = true;
-
-  Widget _buildErrorContainer() {
-    return Container(
-      color: Colors.grey[300],
-      child: const Center(
-        child: Icon(
-          Icons.error,
-          color: Colors.grey,
-          size: 50,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPlaceholderContainer(String placeName) {
-    return Container(
-      color: Colors.grey[300],
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.image,
-              color: Colors.grey,
-              size: 50,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              placeName,
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
-    int rating = double.tryParse(widget.place['rating'] ?? '0')?.round() ?? 0;
+    int rating = double.tryParse(widget.hotel['rating'] ?? '0')?.round() ?? 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -91,17 +50,14 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Card(
-                elevation: 5,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: SizedBox(
-                    height: 400,
-                    width: MediaQuery.of(context).size.width,
-                    child: _buildImageWidget(),
-                  ),
+            Card(
+              elevation: 5,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  height: 400,
+                  width: MediaQuery.of(context).size.width,
+                  child: _buildImageWidget()
                 ),
               ),
             ),
@@ -112,16 +68,14 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    textAlign: TextAlign.center,
-                    widget.place['name'] ?? 'Place Name',
+                    widget.hotel['name'] ?? 'Hotel Name',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
                     ),
                   ),
                   Text(
-                    textAlign: TextAlign.center,
-                    widget.place['location'] ?? 'Location',
+                    widget.hotel['location'] ?? 'Location',
                     style: const TextStyle(
                       fontSize: 18,
                       color: Colors.grey,
@@ -144,13 +98,11 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
                     children: const <Widget>[
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 32),
-                        child: Text('Overview', textAlign: TextAlign.center,
-                        ),
+                        child: Text('Overview'),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 32),
-                        child: Text('Details', textAlign: TextAlign.center,
-                        ),
+                        child: Text('Details'),
                       ),
                     ],
                   ),
@@ -158,9 +110,9 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       showOverview
-                          ? widget.place['overview'] ??
-                          'Overview of the place is not available.'
-                          : 'Detailed History: This place boasts a rich history dating back centuries, featuring architectural marvels and cultural significance. Visitor Information: Open daily from 9 AM to 5 PM, with guided tours available. Best time to visit is during the cooler months. Additional Facts: Known for its intricate designs and historical events, it attracts millions of tourists annually. Nearby attractions include local markets and museums.',
+                          ? widget.hotel['overview'] ??
+                          'Overview of the hotel is not available.'
+                          : 'Detailed Amenities: This hotel offers spacious rooms, a fitness center, a rooftop pool, and a 24/7 restaurant. Booking Information: Reservations can be made online or by calling +92-123-4567890. Check-in at 2 PM, check-out at 12 PM. Guest Reviews: Highly praised for its staff hospitality and clean facilities, with an average stay duration of 3 nights. Additional Services: Complimentary breakfast and Wi-Fi included.',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
@@ -216,24 +168,20 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
           }
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder:(context) => PlacePanoView(place: widget.place)
-          ));
-        },
-        label:
-        const Text('Virtual Tour', style: TextStyle(color: Colors.white)),
-        icon: const Icon(Icons.play_arrow_sharp, color: Colors.white),
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () {},
+      //   label: const Text('Reserve Now', style: TextStyle(color: Colors.white)),
+      //   icon: const Icon(Icons.book_online, color: Colors.white),
+      //   backgroundColor: Colors.black,
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(15),
+      //   ),
+      // ),
     );
   }
   Widget _buildImageWidget() {
-    final assetPath = widget.place['assetPath']; // This contains Firebase Storage path
+    final assetPath = widget.hotel['assetPath']; // This contains Firebase Storage path
     final storage = StorageService();
     // If we have a Firebase Storage path, use FutureBuilder to get the download URL
     if (assetPath != null && assetPath.isNotEmpty) {
@@ -261,7 +209,7 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
 
           // Check if it's the fallback placeholder URL
           if (imageUrl.contains('placeholder')) {
-            return _buildPlaceholderContainer(widget.place['name'] ?? 'Image');
+            return _buildPlaceholderContainer(widget.hotel['name'] ?? 'Image');
           }
 
           return CachedNetworkImage(
@@ -289,6 +237,46 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreen> {
     }
 
     // Fallback to placeholder if no storage path is provided
-    return _buildPlaceholderContainer(widget.place['name'] ?? 'Image');
+    return _buildPlaceholderContainer(widget.hotel['name'] ?? 'Image');
+  }
+
+  Widget _buildErrorContainer() {
+    return Container(
+      color: Colors.grey[300],
+      child: const Center(
+        child: Icon(
+          Icons.error,
+          color: Colors.grey,
+          size: 50,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPlaceholderContainer(String placeName) {
+    return Container(
+      color: Colors.grey[300],
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.image,
+              color: Colors.grey,
+              size: 50,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              placeName,
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

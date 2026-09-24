@@ -1,17 +1,17 @@
-import 'package:venture_scape/find_places.dart';
-import 'package:venture_scape/login_page.dart';
-import 'package:venture_scape/pano_view.dart';
+import 'package:venture_scape/screens/places/find_places.dart';
+import 'package:venture_scape/screens/auth/login_page.dart';
+import 'package:venture_scape/screens/places/pano_view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_google_places_sdk/flutter_google_places_sdk.dart';
 import 'package:scroll_to_index/util.dart';
-import 'chatbot.dart';
+import 'package:venture_scape/screens/chat/chatbot.dart';
 import 'firebase_options.dart';
-import 'new_places.dart';
-import 'signup_page.dart';
-import 'dashboard.dart';
+import 'package:venture_scape/screens/places/new_places.dart';
+import 'package:venture_scape/screens/auth/signup_page.dart';
+import 'package:venture_scape/screens/dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

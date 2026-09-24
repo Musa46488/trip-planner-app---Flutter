@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:venture_scape/chatbot.dart';
+import 'package:venture_scape/screens/chat/chatbot.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:venture_scape/storage_service.dart';
-import 'login_page.dart';
-import 'see_all.dart';
-import 'hotel_info_screen.dart';
-import 'place_info_screen.dart';
-import 'favourite.dart';
-import 'profile_page.dart';
-import 'auth_service.dart';
+import 'package:venture_scape/services/storage_service.dart';
+import 'package:venture_scape/screens/auth/login_page.dart';
+import 'package:venture_scape/screens/places/see_all.dart';
+import 'package:venture_scape/screens/places/hotel_info_screen.dart';
+import 'package:venture_scape/screens/places/place_info_screen.dart';
+import 'package:venture_scape/screens/favorites/favourite.dart';
+import 'package:venture_scape/screens/profile/profile_page.dart';
+import 'package:venture_scape/services/auth_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
